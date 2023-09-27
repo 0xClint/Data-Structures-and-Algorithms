@@ -5,7 +5,7 @@ int binarySearch(int arr[], int n, int key)
 {
     int start = 0;
     int end = n - 1;
-    int mid = (start + end) / 2;
+    int mid = start + (end - start) / 2;
 
     while (start <= end)
     {
@@ -21,7 +21,7 @@ int binarySearch(int arr[], int n, int key)
         {
             start = mid + 1;
         }
-        mid = (start + end) / 2;
+        mid = start + (end - start) / 2;
     }
     return -1;
 }
@@ -46,6 +46,6 @@ int main()
         45,
         67};
 
-    int index = binarySearch(odd, sizeof(odd), 1);
+    int index = binarySearch(odd, sizeof(odd), 13);
     cout << "THe index of given value is " << index << endl;
 }
