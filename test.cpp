@@ -1,33 +1,48 @@
 #include <bits/stdc++.h>
 using namespace std;
+const int N = 1e5 + 10;
+int n;
+long long int arr[N] ;
 
-int sortData(int arr[], int n)
+string isTPrime(long long num)
 {
-    int start = 0;
-    int end = n - 1;
-    int mid = start + (end - start) / 2;
-
-    while (start < end)
+    long long s = 1, e = num, mid = (e + s) / 2;
+    if (num == 1)
     {
-        if (arr[mid - 1] < arr[mid])
+        return "NO";
+    }
+    while (e >= s)
+    {
+        long long square = mid * mid;
+
+        if (square == num)
         {
-            start = mid;
+            return "YES";
+        }
+        if (square > num)
+        {
+            e = mid - 1;
         }
         else
         {
-            end = mid - 1;
+            s = mid + 1;
         }
-        mid = start + (end - start) / 2;
+        mid = (e + s) / 2;
     }
-    return start;
+    return "NO";
 }
 
 int main()
 {
-    int arr[] = {0, 10, 15, 5, 2};
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+    for (int i = 0; i < n; i++)
+    {
 
-    int ans = sortData(arr, 5);
-
-    cout << arr[ans] << endl;
+        cout << isTPrime(arr[i]) << endl;
+    }
     return 0;
 }
