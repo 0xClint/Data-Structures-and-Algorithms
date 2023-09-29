@@ -1,48 +1,64 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int N = 1e5 + 10;
-int n;
-long long int arr[N] ;
+const int N = 1e4 + 10;
+int n, m;
+int chaptTime[N];
 
-string isTPrime(long long num)
+bool checkTime(int chapTime[], int m, int n, int mid)
 {
-    long long s = 1, e = num, mid = (e + s) / 2;
-    if (num == 1)
-    {
-        return "NO";
-    }
-    while (e >= s)
-    {
-        long long square = mid * mid;
 
-        if (square == num)
+    int dayCount = 1;
+    int timeSum = 0;
+    for (int i = 0; i < m; i++)
+    {
+        if (timeSum + chapTime[i] <= mid)
         {
-            return "YES";
-        }
-        if (square > num)
-        {
-            e = mid - 1;
+            timeSum += chapTime[i];
         }
         else
         {
-            s = mid + 1;
+            dayCount++;
+            if (dayCount > n || chapTime[i] > mid)
+            {
+                return false;
+            }
+            timeSum = chapTime[i];
         }
-        mid = (e + s) / 2;
     }
-    return "NO";
+
+    return true;
 }
 
 int main()
 {
-    cin >> n;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> arr[i];
-    }
-    for (int i = 0; i < n; i++)
+
+    int t, sum = 0;
+    cin >> t;
+    while (t--)
     {
 
-        cout << isTPrime(arr[i]) << endl;
+        cin >> n >> m;
+        for (int i = 0; i < m; i++)
+        {
+            cin >> chaptTime[i];
+            sum += chaptTime[i];
+        }
+
+        int s = 0, e = sum, ans = -1, mid = (s + e) / 2;
+        while (s <= e)
+        {
+            if (checkTime(chaptTime, m, n, mid))
+            {
+                ans = mid;
+                e = mid - 1;
+            }
+            else
+            {
+                s = mid + 1;
+            }
+            mid = (s + e) / 2;
+        }
+
+        cout << ans << endl;
     }
-    return 0;
 }
