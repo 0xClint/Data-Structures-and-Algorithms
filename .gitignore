@@ -1,3 +1,4 @@
 # compiled file
 *.exe
 .vscode
+test.cpp
