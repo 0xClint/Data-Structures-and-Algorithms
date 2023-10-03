@@ -1,3 +1,5 @@
+// https://www.codingninjas.com/studio/problems/painter's-partition-problem_1089557?source=youtube&campaign=love_babbar_codestudio2
+
 #include <bits/stdc++.h>
 using namespace std;
 const int N = 1e4 + 10;

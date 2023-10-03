@@ -1,3 +1,5 @@
+// https://www.codingninjas.com/studio/problems/aggressive-cows_1082559?source=youtube&campaign=love_babbar_codestudio2
+
 #include <bits/stdc++.h>
 using namespace std;
 const int N = 1e5 + 10;
@@ -6,28 +8,24 @@ int positions[N];
 
 bool distanceCheck(int minDist)
 {
-    int lastPos = -1;
-    int cows_ct = cows;
+    int lastPos = positions[0];
+    int cowsCount = 1;
     for (int i = 0; i < n; i++)
     {
-        if (positions[i] - lastPos >= minDist || lastPos == -1)
+        if (positions[i] - lastPos >= minDist)
         {
-            cows_ct--;
+            cowsCount++;
+            if (cowsCount == cows)
+                return true;
+
             lastPos = positions[i];
         }
-        if (cows_ct == 0)
-            break;
     }
-    return cows_ct == 0;
+    return false;
 }
 
 int main()
 {
-
-    int t;
-    cin >> t;
-    while (t--)
-    {
 
     cin >> n >> cows;
     for (int i = 0; i < n; i++)
@@ -36,13 +34,14 @@ int main()
     }
     sort(positions, positions + n);
 
-    int s = 0, e = 1e9, mid = (s + e) / 2;
-    while (e > s)
+    int s = 0, e = 1e9, ans = -1, mid = (s + e) / 2;
+    while (e >= s)
     {
 
         if (distanceCheck(mid))
         {
-            s = mid;
+            ans = mid;
+            s = mid + 1;
         }
         else
         {
@@ -51,13 +50,5 @@ int main()
         mid = (s + e) / 2;
     }
 
-    if (distanceCheck(e))
-    {
-        cout << e << endl;
-    }
-    else
-    {
-        cout << s << endl;
-    }
-    }
+    cout << ans;
 }
