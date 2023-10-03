@@ -17,15 +17,17 @@ int main()
 
         for (int i = 0; i < n - 1; i++)
         {
+            int minIndex = i;
 
-            for (int j = 0; j < n - i - 1; j++)
+            for (int j = i + 1; j < n; j++)
             {
 
-                if (arr[j] > arr[j + 1])
+                if (arr[j] < arr[minIndex])
                 {
-                    swap(arr[j], arr[j + 1]);
+                    minIndex = j;
                 }
             }
+            swap(arr[minIndex], arr[i]);
         }
 
         for (int i = 0; i < n; i++)
