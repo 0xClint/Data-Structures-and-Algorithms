@@ -3,6 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Complexity O(n*log(logn))
 int main()
 {
     int n = 500000;
