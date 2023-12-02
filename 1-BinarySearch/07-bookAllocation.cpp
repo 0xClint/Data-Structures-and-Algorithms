@@ -1,3 +1,4 @@
+// https://www.codingninjas.com/studio/problems/ayush-and-ninja-test_1097574?source=youtube&campaign=love_babbar_codestudio2
 #include <bits/stdc++.h>
 using namespace std;
 const int N = 1e4 + 10;

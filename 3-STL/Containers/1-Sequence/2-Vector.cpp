@@ -40,11 +40,12 @@ int main()
         cout << i << " ";
     cout << endl;
 
+
     // Size - Total no. of element in  that vector
     // Capacity - Total amount of allocation capacity of that vector
     cout << "Capacity -> " << v2.capacity() << endl;
     cout << "Size -> " << v2.size() << endl;
-    cout << "Front element -> " << v2.front() << endl;
+    cout << "Front element -> " << v2[2] << endl;
     cout << "Back Element -> " << v2.back() << endl;
     v2.erase(v2.begin(), v2.begin() + 1);
 

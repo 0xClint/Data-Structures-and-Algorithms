@@ -1,38 +1,92 @@
+// https://leetcode.com/problems/merge-sorted-array/submissions/
+
 #include <bits/stdc++.h>
 using namespace std;
 
+char toL(char ch)
+{
+    if (ch >= 'A' && ch <= 'Z')
+    {
+        return ch - 'A' + 'a';
+    }
+    return ch;
+}
+
+bool isAllowed(char ch)
+{
+    return ch >= 'a' && ch <= 'z' || ch >= '0' && ch <= '9' ||
+           ch >= 'A' && ch <= 'Z';
+    // return isalnum(ch);
+}
+
 int main()
 {
-    int t;
-    cin >> t;
-    while (t--)
+
+    // string s = "aaBBa@";
+
+    // int start = 0;
+
+    // int end = s.size() - 1;
+    // while (start <= end)
+    // {
+
+    //     if (!isAllowed(s[start]))
+    //     {
+    //         start++;
+    //     }
+
+    //     if (!isAllowed(s[end]))
+    //     {
+    //         end--;
+    //     }
+
+    //     if (toL(s[start]) == toL(s[end]))
+    //     {
+    //         start++;
+    //         end--;
+    //     }
+    //     else
+    //     {
+    //         cout << "No";
+    //         return 0;
+    //     }
+    // }
+    // cout << "Yes";
+    // return 0;
+
+    string str = "testsample";
+    int arr[26] = {0};
+
+    for (int i = 0; i < str.length(); i++)
     {
-        int n;
-        cin >> n;
-        int arr[n];
-        for (int i = 0; i < n; i++)
+        char ch = arr[i];
+        int number = 0;
+
+        if (ch >= 'a' || ch <= 'z')
         {
-            cin >> arr[i];
+            number = ch - 'a';
         }
-
-        for (int i = 0; i < n - 1; i++)
+        else
         {
-
-            for (int j = 0; j < n - i - 1; j++)
-            {
-
-                if (arr[j] > arr[j + 1])
-                {
-                    swap(arr[j], arr[j + 1]);
-                }
-            }
+            number = ch - 'A';
         }
-
-        for (int i = 0; i < n; i++)
-        {
-            cout << arr[i] << " ";
-        }
-
-        cout << endl;
+        arr[number]++;
     }
+
+    int max = -1;
+    int ans = 0;
+
+    for (int i = 0; i < 26; i++)
+    {
+        if (max < arr[i])
+        {
+            cout<<"HEllo";
+            ans = i;
+            max = arr[i];
+        }
+    }
+    cout << ans;
+
+    char ansFinal = 'a' + ans;
+    cout << ansFinal;
 }

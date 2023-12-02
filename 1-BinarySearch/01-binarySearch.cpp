@@ -46,6 +46,6 @@ int main()
         45,
         67};
 
-    int index = binarySearch(odd, sizeof(odd), 13);
+    int index = binarySearch(odd, sizeof(odd), 1);
     cout << "THe index of given value is " << index << endl;
 }
