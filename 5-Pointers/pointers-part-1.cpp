@@ -13,6 +13,7 @@ int main()
     cout << "address of num = " << &num << endl;
     cout << "value of ptr = " << ptr << endl;
     cout << "size of ptr = " << sizeof(ptr) << endl;
+    cout << "size of *ptr = " << sizeof(*ptr) << endl;
     cout << "value of *ptr = " << *ptr << endl;
     (*ptr)++;
     cout << "value of num = " << num << endl;
