@@ -9,7 +9,9 @@ Stack memory:
 It has a fixed value of size for which an array could be declared in the contiguous form.
 
 Heap memory:
-It is the memory where the array declared is not stored in a contiguous way. If we want to declare an array of size 100000, we do not have the contiguous space in the memory of the same size. We will be declaring the array using heap memory as it necessarily doesn’t require a contiguous allocation;
+It is the memory where the array declared is not stored in a contiguous way. If we want to declare an array of size 100000,
+we do not have the contiguous space in the memory of the same size. We will be declaring the array using heap memory as it
+necessarily doesn’t require a contiguous allocation;
 it will allocate the space wherever it gets and links all the memory blocks together.
 
 Note : Global variables are stored using heap memory.
