@@ -23,7 +23,7 @@ int main()
     // for (int i = 0; i < n; i++)
     // {
     //     for (int j = 0; j < sizeof(arr[i]); j++)
-    //     {
+    //     {3
     //         cin >> arr[i][j];
     //     }
     // }
