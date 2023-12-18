@@ -1,6 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
+***Drawbacks of Merge Sort:***
+
+Space complexity:
+Merge sort requires additional memory to store the merged sub-arrays during the sorting process.
+
+Not in-place:
+Merge sort is not an in-place sorting algorithm, which means it requires additional memory to store the sorted data.
+This can be a disadvantage in applications where memory usage is a concern.
+
+Not always optimal for small datasets:
+For small datasets, Merge sort has a higher time complexity than some other sorting algorithms, such as insertion sort.
+This can result in slower performance for very small datasets.
+
+*/
+
 void merge(int *arr, int s, int e)
 {
 
