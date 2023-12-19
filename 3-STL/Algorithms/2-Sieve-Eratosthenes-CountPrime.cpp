@@ -6,7 +6,7 @@ using namespace std;
 // Complexity O(n*log(logn))
 int main()
 {
-    int n = 500000;
+    int n = 15;
     vector<bool> prime(n + 1, true);
 
     int count = 0;
