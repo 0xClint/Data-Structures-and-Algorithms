@@ -20,18 +20,28 @@ int sumUp(int arr[], int size, int sum = 0)
     return sumUp(arr + 1, size - 1, sum + arr[0]);
 }
 
+// int searchArr(int arr[], int size, int key, int index = 0)
+// {
+//     if (size == 0)
+//     {
+//         return -1;
+//     }
+//     if (arr[0] == key)
+//     {
+//         return index;
+//     }
+//     return searchArr(arr + 1, size - 1, key, index + 1);
+// }
+
 int searchArr(int arr[], int size, int key, int index = 0)
 {
+    if (arr[0] == key)
+        return index;
 
     if (size == 0)
-    {
         return -1;
-    }
-    if (arr[0] == key)
-    {
-        return index;
-    }
-    return searchArr(arr + 1, size - 1, key, index + 1);
+
+    searchArr(arr + 1, size - 1, key, index + 1);
 }
 
 int main()
@@ -41,6 +51,6 @@ int main()
     // int arr[5] = {8, 11, 13, 15, 71};
 
     cout << "Is sorted = " << isSorted(arr, 5) << endl;
-    cout << "Sum of arr = " << sumUp(arr, 1) << endl;
-    cout << "index of key = 15 in arr is " << searchArr(arr, 5, 70) << endl;
+    cout << "Sum of arr = " << sumUp(arr, 5) << endl;
+    cout << "index of key = 15 in arr is " << searchArr(arr, 5, 71) << endl;
 }

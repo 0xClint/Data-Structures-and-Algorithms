@@ -4,7 +4,7 @@ using namespace std;
 int getPower1(int a, int b, long long int result = 1)
 {
     if (b == 0)
-        return result * 1;
+        return result;
 
     return getPower1(a, --b, result * a);
 }
@@ -21,13 +21,23 @@ int getPower2(int a, int b)
         return getPower2(a, b / 2) * getPower2(a, b / 2);
 
     else
-        return a * getPower2(a, (b - 1) / 2) * getPower2(a, b / 2);
+        return a * getPower2(a, (b) / 2) * getPower2(a, b / 2);
 }
 int main()
 {
 
     int a, b;
     cin >> a >> b;
-    cout << a << "^" << b << " = " << getPower1(a, b) << endl;
+    // cout << a << "^" << b << " = " << getPower1(a, b) << endl;
     cout << a << "^" << b << " = " << getPower2(a, b) << endl;
 }
+
+// int power2(int a, int b, long long int result = 1)
+// {
+//     if (b == 0)
+//     {
+//         return result;
+//     }
+
+//     power2(a, b - 1, result * a);
+// }
