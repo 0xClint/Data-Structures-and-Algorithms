@@ -38,7 +38,7 @@ Node *convertArr2LL(vector<int> &arr)
 int tranverseLL(Node *head)
 {
     Node *temp = head;
-    while (temp)
+    while (temp->next->next != NULL)
     {
         cout << temp->data << " ";
         temp = temp->next;
@@ -248,6 +248,6 @@ int main()
     // head = insertKindex(head, 5, 44);
 
     // Insert element Before
-    head = insertElementBefore(head, 5, 99);
+    // head = insertElementBefore(head, 5, 99);
     tranverseLL(head);
 }
