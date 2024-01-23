@@ -1,56 +1,46 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int partition(vector<int> &arr, int s, int e)
-{
-
-    int pivot = arr[s];
-    int count = 0;
-
-    for (int i = s + 1; i <= e; i++)
-    {
-        if (arr[i] <= pivot)
-            count++;
-    }
-
-    int pivotIndex = s + count;
-    swap(arr[s], arr[pivotIndex]);
-
-    int i = s, j = e;
-    while (i < pivotIndex && j > pivotIndex)
-    {
-        while (arr[i] <= pivot)
-            i++;
-
-        while (arr[j] > pivot)
-            j--;
-
-        if (i < pivotIndex && j > pivotIndex)
-            swap(arr[i++], arr[j--]);
-    }
-
-    return pivotIndex;
-}
-
-void solve(vector<int> &arr, int s, int e)
-{
-    if (s >= e)
-        return;
-
-    int p = partition(arr, s, e);
-
-    solve(arr, s, p - 1);
-    solve(arr, p + 1, e);
-}
-
 int main()
 {
-    vector<int> arr = {6, 6, -6, -2, -4, -6, 2, -6};
+    vector<int> nums = {5, 7, 7, 8, 8, 10};
+    int target = 8;
+    int s = 0;
+    int e = nums.size() - 1;
+    int mid = (e + s) / 2;
+    vector<int> ans(2, -1);
 
-    solve(arr, 0, arr.size() - 1);
-
-    for (int i = 0; i < arr.size(); i++)
+    while (s <= e)
     {
-        cout << arr[i] << " ";
+        if (nums[mid] == target)
+        {
+            int temp1 = mid;
+            while (nums[temp1 + 1] != target)
+            {
+                temp1++;
+            }
+            ans[1] = temp1;
+
+            int temp2 = mid;
+            while (nums[temp2 - 1] == target)
+            {
+                temp2--;
+            }
+            ans[0] = temp1;
+            break;
+        }
+
+        if (nums[mid] > target)
+            e = mid - 1;
+        else
+            s = mid + 1;
+
+        mid = (e + s) / 2;
+    }
+    cout << "HELLO" << endl;
+
+    for (int i = 0; i < ans.size(); i++)
+    {
+        cout << ans[i] << " ";
     }
 }

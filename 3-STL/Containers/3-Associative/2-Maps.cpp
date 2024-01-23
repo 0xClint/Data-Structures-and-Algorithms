@@ -20,7 +20,6 @@ int main()
     cout << endl;
 
     auto it = m.find(12);
-
     for (auto i = it; i != m.end(); i++)
     {
         cout << (*i).first << " " << (*i).second << endl;

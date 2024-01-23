@@ -32,20 +32,20 @@ int main()
                    5,
                    9,
                    15,
-                   23,
+                   15,
                    56,
                    76,
                    98};
 
     int odd[7] = {
-        1,
         5,
-        8,
+        5,
+        5,
         13,
-        19,
+        13,
         45,
         67};
 
-    int index = binarySearch(odd, sizeof(odd), 1);
+    int index = binarySearch(odd, sizeof(odd), 5);
     cout << "THe index of given value is " << index << endl;
 }

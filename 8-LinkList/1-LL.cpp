@@ -44,210 +44,48 @@ int tranverseLL(Node *head)
         temp = temp->next;
     }
 }
-
-// **************** Deletion **************************
-
-Node *deleteHead(Node *head)
+Node *reverseLL(Node *head)
 {
-    if (head == NULL)
+    if (head == NULL || head->next == NULL)
         return head;
 
-    Node *temp = head;
-    head = head->next;
-    return head;
-    delete temp;
-}
+    Node *newHead = reverseLL(head->next);
+    Node *front = head->next;
+    front->next = head;
+    head->next = NULL;
 
-Node *removeTail(Node *head)
-{
-    if (head == NULL || head->next == nullptr)
-        return head;
-
-    Node *temp = head;
-
-    while (temp->next->next != NULL)
-    {
-        temp = temp->next;
-    }
-
-    delete temp->next;
-    temp->next = nullptr;
-
-    return head;
-}
-
-Node *removeKIndex(Node *head, int k)
-{
-    if (head == NULL)
-        return head;
-
-    Node *temp = head;
-    int cnt(0);
-    Node *prev = NULL;
-
-    if (k == 1)
-    {
-        head = head->next;
-        delete temp;
-        return head;
-    }
-    while (temp != NULL)
-    {
-        cnt++;
-        if (cnt == k)
-        {
-            // prev->next = prev->next->next;
-            prev->next = temp->next;
-            delete temp;
-            break;
-        }
-        prev = temp;
-        temp = temp->next;
-    }
-
-    return head;
-}
-
-Node *removeElement(Node *head, int el)
-{
-    if (head == NULL)
-        return head;
-
-    Node *temp = head;
-    Node *prev = NULL;
-
-    if (head->data == el)
-    {
-        head = head->next;
-        delete temp;
-        return head;
-    }
-    while (temp != NULL)
-    {
-        if (temp->data == el)
-        {
-            // prev->next = prev->next->next;
-            prev->next = temp->next;
-            delete temp;
-            break;
-        }
-        prev = temp;
-        temp = temp->next;
-    }
-
-    return head;
-}
-
-// **************** Insertion **************************
-
-Node *insertHead(Node *head, int element)
-{
-    return new Node(element, head);
-}
-
-Node *insertTail(Node *head, int element)
-{
-    if (head == NULL)
-    {
-        return new Node(element);
-    }
-    Node *temp = head;
-
-    while (temp->next != NULL)
-    {
-        temp = temp->next;
-    }
-
-    Node *newNode = new Node(element);
-    temp->next = newNode;
-    return head;
-}
-
-Node *insertKindex(Node *head, int k, int element)
-{
-    if (head == NULL)
-    {
-        if (k == 1)
-            return new Node(element);
-        else
-            return head;
-    }
-
-    if (k == 1)
-        return new Node(element, head);
-
-    Node *temp = head;
-    int cnt(0);
-
-    while (temp != NULL)
-    {
-        cnt++;
-        if (cnt == k - 1)
-        {
-            Node *newNode = new Node(element, temp->next);
-            temp->next = newNode;
-            break;
-        }
-        temp = temp->next;
-    }
-    return head;
-}
-
-Node *insertElementBefore(Node *head, int target, int element)
-{
-    if (head == NULL)
-        return head;
-
-    if (head->data == target)
-        return new Node(element, head);
-
-    Node *temp = head;
-
-    while (temp->next != NULL)
-    {
-
-        if (temp->next->data == target)
-        {
-            Node *newNode = new Node(element, temp->next);
-            temp->next = newNode;
-            break;
-        }
-        temp = temp->next;
-    }
-    return head;
+    return newHead;
 }
 
 int main()
 {
-    vector<int> arr = {5, 67, 23, 71};
+    vector<int> arr = {1, 5, 2};
 
     Node *head = convertArr2LL(arr);
     // Traverse LL
-    tranverseLL(head);
-    cout << endl;
+    // tranverseLL(head);
 
-    // deletion head
-    // head = deleteHead(head);
+    // Write Your Code Here.
+    Node *current = reverseLL(head);
+    int carry = 1;
 
-    // delete tail
-    // head = removeTail(head);
+    while (current != NULL)
+    {
+        cout << "HELLO";
+        if (carry == 0)
+            break;
 
-    // delete Kth index
-    // head = removeKIndex(head, 2);
+        int sum = carry + current->data;
+        current->data = sum % 10;
+        carry = sum / 10;
 
-    // delete Element
-    // head = removeElement(head, 67);
+        current = current->next;
+    }
+    reverseLL(head);
 
-    // Insert head
-    // head = insertHead(head, 111);
-
-    // Insert Tail
-    // head = insertTail(head, 190);
-
-    // Insert Kth Index
-    // head = insertKindex(head, 5, 44);
-
-    // Insert element Before
-    // head = insertElementBefore(head, 5, 99);
+    if (carry == 1)
+    {
+        tranverseLL(new Node(1, head));
+    }
     tranverseLL(head);
 }
