@@ -1,49 +1,33 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void sqrCheck(int k)
-{
-    long long int s = 1;
-    long long int e = k;
-    long long int mid = (s + e) / 2;
-
-    while (s <= e)
-    {
-        if (mid * mid == k)
-        {
-            cout << "YES" << endl;
-            return;
-        }
-
-        if (mid * mid > k)
-            e = mid - 1;
-        else
-            s = mid + 1;
-
-        mid = (s + e) / 2;
-    }
-    cout << "NO" << endl;
-    ;
-}
-
 int main()
 {
-    int t;
-    cin >> t;
+    vector<int> a = {1, 2, 1, 3};
+    int k = 2;
+    int n = a.size();
+    int sum = a[0];
+    int left = 0;
+    int right = 0;
+    int len(0);
 
-    while (t--)
+    while (right < n)
     {
-        int n;
-        cin >> n;
-        long long int sum = 0;
+        if (sum == k)
+            len = max(len, right - left + 1);
 
-        for (int i = 0; i < n; i++)
+        if (sum <= k)
         {
-            int temp;
-            cin >> temp;
-            sum += temp;
+            right++;
+            if (right < n)
+                sum += a[right];
         }
-
-        sqrCheck(sum);
+        else
+        {
+            sum -= a[left];
+            left++;
+        }
     }
+
+    cout << "ans = " << len << endl;
 }
