@@ -13,11 +13,12 @@ int main()
 
     for (auto i : m)
     {
+        // cout << i;
         cout << i.first << " " << i.second << endl;
     }
     cout << "Finding 19 --> " << m.count(19) << endl;
 
-    cout << endl;
+    cout << m.size() << endl;
 
     auto it = m.find(12);
     for (auto i = it; i != m.end(); i++)

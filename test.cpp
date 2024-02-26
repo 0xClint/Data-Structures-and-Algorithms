@@ -1,33 +1,38 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+bool sqrCheck(long long int k)
+{
+    long long val = pow(k, 0.5);
+    if (val * val == k)
+        return true;
+    return false;
+}
+
 int main()
 {
-    vector<int> a = {1, 2, 1, 3};
-    int k = 2;
-    int n = a.size();
-    int sum = a[0];
-    int left = 0;
-    int right = 0;
-    int len(0);
+    int t;
+    cin >> t;
 
-    while (right < n)
+    while (t--)
     {
-        if (sum == k)
-            len = max(len, right - left + 1);
+        int n;
+        cin >> n;
+        long long int sum = 0;
 
-        if (sum <= k)
+        for (int i = 0; i < n; i++)
         {
-            right++;
-            if (right < n)
-                sum += a[right];
+            int temp;
+            cin >> temp;
+            sum += temp;
         }
+
+        if (sqrCheck(sum))
+        {
+            cout << "YES" << endl;
+        }
+
         else
-        {
-            sum -= a[left];
-            left++;
-        }
+            cout << "NO" << endl;
     }
-
-    cout << "ans = " << len << endl;
 }
